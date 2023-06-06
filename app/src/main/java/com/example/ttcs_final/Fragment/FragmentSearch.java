@@ -27,7 +27,7 @@ import java.util.List;
 public class FragmentSearch extends Fragment implements View.OnClickListener{
     private RecyclerView recyclerView;
     private TextView tvTong, tvtke;
-    private Button btSearch, btTke;
+    private Button btTke;
     private SearchView searchView;
     private Spinner spCategory;
     private RecycleViewAdapter adapter;

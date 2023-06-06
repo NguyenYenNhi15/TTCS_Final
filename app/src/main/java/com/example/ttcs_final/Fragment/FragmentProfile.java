@@ -30,7 +30,7 @@ import java.util.List;
 public class FragmentProfile extends Fragment implements RecycleViewAdapter.ItemListener{
     private ImageView imageView;
     private TextView uName, uEmail;
-    private Button changePass, setting, feedBack, logout;
+    private Button changePass, logout;
     private SQLHelper db;
     private User user = new User();
 
@@ -44,12 +44,9 @@ public class FragmentProfile extends Fragment implements RecycleViewAdapter.Item
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         db = new SQLHelper(getContext());
-        //Get user từ mainActivity:
         imageView = view.findViewById(R.id.profile_picture);
         uName = view.findViewById(R.id.user_name);
         uEmail = view.findViewById(R.id.user_email);
-        setting = view.findViewById(R.id.settings_button);
-        feedBack = view.findViewById(R.id.feedback_button);
         logout = view.findViewById(R.id.logout_button);
         changePass = view.findViewById(R.id.changepass_button);
         changePass.setOnClickListener(new View.OnClickListener() {

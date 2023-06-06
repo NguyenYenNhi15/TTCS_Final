@@ -80,19 +80,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_radius_1"
             android:text="Thay đổi mật khẩu"/>
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_radius_1"
-            android:text="Cài đặt"/>
-
-        <Button
-            android:id="@+id/feedback_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_radius_1"
-            android:text="Trợ giúp"/>
 
         <Button
             android:id="@+id/logout_button"

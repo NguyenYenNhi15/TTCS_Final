@@ -28,7 +28,6 @@ public class FragmentDanhSach extends Fragment implements RecycleViewAdapter.Ite
     private RecyclerView recyclerView;
     RecycleViewAdapter adapter;
     private SQLHelper db;
-    private TextView tvTong;
     private User user = new User();
 
     @Nullable
@@ -41,7 +40,6 @@ public class FragmentDanhSach extends Fragment implements RecycleViewAdapter.Ite
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclrView);
-        tvTong = view.findViewById(R.id.tvTong);
         adapter = new RecycleViewAdapter();
         db = new SQLHelper(getContext());
         Date d = new Date();
