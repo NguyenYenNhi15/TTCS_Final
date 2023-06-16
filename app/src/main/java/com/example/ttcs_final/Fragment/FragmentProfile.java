@@ -1,7 +1,10 @@
 package com.example.ttcs_final.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +30,7 @@ import com.example.ttcs_final.UpdateDeleteActivity;
 
 import java.util.List;
 
-public class FragmentProfile extends Fragment implements RecycleViewAdapter.ItemListener{
+public class FragmentProfile extends Fragment implements RecycleViewAdapter.ItemListener {
     private ImageView imageView;
     private TextView uName, uEmail;
     private Button changePass, logout;
@@ -43,17 +46,25 @@ public class FragmentProfile extends Fragment implements RecycleViewAdapter.Item
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         db = new SQLHelper(getContext());
         imageView = view.findViewById(R.id.profile_picture);
         uName = view.findViewById(R.id.user_name);
         uEmail = view.findViewById(R.id.user_email);
         logout = view.findViewById(R.id.logout_button);
         changePass = view.findViewById(R.id.changepass_button);
+        String email = sharedPreferences.getString("email", "");
+        String password = sharedPreferences.getString("password", "");
+        Log.i("email, password", email + " " + password);
+        user = db.getUserByEmailAndPassword(email, password);
+        String username = user.getName();
+        Log.i("username", username);
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChangePassWordActivity.class);
                 intent.putExtra("User", user);
+                Log.i("user", String.valueOf(user));
                 startActivity(intent);
             }
         });
@@ -65,14 +76,15 @@ public class FragmentProfile extends Fragment implements RecycleViewAdapter.Item
                 startActivity(intent);
             }
         });
-        uName.setText("Tên của bạn: "+ user.getName());
-        uEmail.setText("Email của bạn: "+user.getEmail());
+        uName.setText("Tên của bạn: " + username);
+        uEmail.setText("Email của bạn: " + email);
     }
 
     @Override
     public void onItemClick(View view, int position) {
 
     }
+
     @Override
     public void onResume() {
         super.onResume();

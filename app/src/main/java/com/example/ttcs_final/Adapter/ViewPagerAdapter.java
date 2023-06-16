@@ -19,20 +19,25 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: return new FragmentDanhSach();
-            case 1: return new FragmentThongTin();
-            case 2: return new FragmentSearch();
-//            case 3: return new FragmentProfile();
-            default: new FragmentDanhSach();
+            case 0:
+                return new FragmentDanhSach();
+            case 1:
+                return new FragmentThongTin();
+            case 2:
+                return new FragmentSearch();
+            case 3:
+                return new FragmentProfile();
+            default:
+                new FragmentDanhSach();
         }
         return null;
     }
 
     @Override
-//    public int getCount() {
-//        return 4;
-//    }
     public int getCount() {
-        return 3;
+        return 4;
     }
+//    public int getCount() {
+//        return 3;
+//    }
 }

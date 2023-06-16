@@ -2,7 +2,9 @@ package com.example.ttcs_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -28,17 +30,22 @@ public class LoginActivity extends AppCompatActivity {
                 String email = binding.loginEmail.getText().toString().trim();
                 String password = binding.loginPassword.getText().toString().trim();
 
-                if(email.equals("")||password.equals(""))
+                if (email.equals("") || password.equals(""))
                     Toast.makeText(LoginActivity.this, "Hãy nhập tất cả các trường", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Boolean checkCredentials = sqlHelper.checkEmailPassword(email, password);
-                    if(checkCredentials == true){
+                    if (checkCredentials == true) {
                         Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                         User user = sqlHelper.getUserByEmailAndPassword(email, password);
-                        Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("USER_OBJECT", user);
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("email", user.getEmail());
+                        editor.putString("password", user.getPassword());
+                        editor.apply();
                         startActivity(intent);
-                    }else{
+                    } else {
                         Toast.makeText(LoginActivity.this, "Thông tin tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_SHORT).show();
                     }
                 }

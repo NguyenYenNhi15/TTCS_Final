@@ -26,7 +26,6 @@ public class MainActivityTablayout extends AppCompatActivity {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_list);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_info);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_search);
-//        tabLayout.getTabAt(3).setIcon(R.drawable.user);
-
+        tabLayout.getTabAt(3).setIcon(R.drawable.user);
     }
 }

@@ -17,6 +17,7 @@ import com.example.ttcs_final.Adapter.ViewPagerAdapter;
 import com.example.ttcs_final.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
     private ViewPager viewPager;
@@ -47,16 +48,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         navigationView.getMenu().findItem(R.id.mHome).setChecked(true);
                         break;
-                    case 1: navigationView.getMenu().findItem(R.id.mThongtin).setChecked(true);
+                    case 1:
+                        navigationView.getMenu().findItem(R.id.mThongtin).setChecked(true);
                         break;
-                    case 2: navigationView.getMenu().findItem(R.id.mSearch).setChecked(true);
+                    case 2:
+                        navigationView.getMenu().findItem(R.id.mSearch).setChecked(true);
                         break;
-//                    case 3: navigationView.getMenu().findItem(R.id.mProfile).setChecked(true);
-//                        break;
+                    case 3:
+                        navigationView.getMenu().findItem(R.id.mProfile).setChecked(true);
+                        break;
                 }
 
             }
@@ -75,10 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(1);
                 } else if (item.getItemId() == R.id.mSearch) {
                     viewPager.setCurrentItem(2);
+                } else if (item.getItemId() == R.id.mProfile) {
+                    viewPager.setCurrentItem(3);
                 }
-//                else if (item.getItemId() == R.id.mProfile) {
-//                    viewPager.setCurrentItem(3);
-//                }
                 return true;
             }
         });
